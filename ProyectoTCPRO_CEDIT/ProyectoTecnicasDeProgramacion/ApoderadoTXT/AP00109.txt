@@ -1,0 +1,7 @@
+ID= AP00109
+NOMBRE= Italo Alexis 
+APELLIDO= Gonzales Cardenas
+CELULAR= 965823147
+DNI= 61007752
+DIRECCION= La Perla
+SEXO= Masculino

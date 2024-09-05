@@ -1,0 +1,7 @@
+ID= AP00105
+NOMBRE= Jorge Paul
+APELLIDO= Quiñones Albines
+CELULAR= 965723555
+DNI= 75485212
+DIRECCION= Av. naranjal 852
+SEXO= Masculino

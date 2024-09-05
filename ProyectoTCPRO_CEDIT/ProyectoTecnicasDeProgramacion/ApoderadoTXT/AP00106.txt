@@ -1,0 +1,7 @@
+ID= AP00106
+NOMBRE= Jasmina Gladys
+APELLIDO= Escalante Chavez
+CELULAR= 951456123
+DNI= 79635245
+DIRECCION= Rosa toro
+SEXO= Femenino

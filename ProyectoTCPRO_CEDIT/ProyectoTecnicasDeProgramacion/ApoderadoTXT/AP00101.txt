@@ -1,0 +1,7 @@
+ID= AP00101
+NOMBRE= Juan Carlos
+APELLIDO= Guerrero Castañeda
+CELULAR= 753159852
+DNI= 74431523
+DIRECCION= Canada
+SEXO= Masculino

@@ -1,0 +1,7 @@
+ID= AA00110
+NOMBRE= Fabian Alonso
+APELLIDO= Denegri Cuba
+GRADO= 3 años
+DNI= 62663667
+NIVEL= Inicial
+SEXO= Masculino

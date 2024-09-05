@@ -1,0 +1,7 @@
+ID= AA00103
+NOMBRE= Andre Mariano
+APELLIDO= Angulo Poma
+GRADO= 3 años
+DNI= 76558453
+NIVEL= Inicial
+SEXO= Masculino

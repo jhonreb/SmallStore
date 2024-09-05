@@ -1,0 +1,7 @@
+ID= AP00102
+NOMBRE= Daniel Obed
+APELLIDO= Yali Vasquez
+CELULAR= 953147863
+DNI= 45665423
+DIRECCION= Los olivos
+SEXO= Masculino

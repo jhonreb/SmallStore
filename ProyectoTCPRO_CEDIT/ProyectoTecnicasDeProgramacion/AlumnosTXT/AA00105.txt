@@ -1,0 +1,7 @@
+ID= AA00105
+NOMBRE= David Sebastián
+APELLIDO= Quiñones Rosas
+GRADO= 2 años
+DNI= 78995412
+NIVEL= Guardería
+SEXO= Masculino

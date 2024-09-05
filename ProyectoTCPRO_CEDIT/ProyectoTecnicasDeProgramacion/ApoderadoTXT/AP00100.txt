@@ -1,0 +1,7 @@
+ID= AP00100
+NOMBRE= dfs
+APELLIDO= dfs
+CELULAR= 35
+DNI= 654
+DIRECCION= fdh
+SEXO= Femenino

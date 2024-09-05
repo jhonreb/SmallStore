@@ -1,0 +1,7 @@
+ID= AA00104
+NOMBRE= Valentino Gael
+APELLIDO= Andia Perez
+GRADO= 4 años
+DNI= 75259688
+NIVEL= Inicial
+SEXO= Masculino

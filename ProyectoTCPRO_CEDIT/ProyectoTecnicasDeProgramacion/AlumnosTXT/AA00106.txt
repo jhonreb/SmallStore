@@ -1,0 +1,7 @@
+ID= AA00106
+NOMBRE= Rebecka Luana
+APELLIDO= Bautista Escalante
+GRADO= 6 años
+DNI= 72336598
+NIVEL= Reforzamiento
+SEXO= Femenino

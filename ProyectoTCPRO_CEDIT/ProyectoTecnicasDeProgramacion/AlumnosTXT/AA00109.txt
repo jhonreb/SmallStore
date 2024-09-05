@@ -1,0 +1,7 @@
+ID= AA00109
+NOMBRE= Matias Yasser
+APELLIDO= Gonzales Condori
+GRADO= 5 años
+DNI= 77481441
+NIVEL= Inicial
+SEXO= Masculino

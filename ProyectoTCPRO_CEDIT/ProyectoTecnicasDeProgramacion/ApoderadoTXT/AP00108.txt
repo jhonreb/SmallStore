@@ -1,0 +1,7 @@
+ID= AP00108
+NOMBRE= Alezza Vale
+APELLIDO= Carbajal Larios
+CELULAR= 987654321
+DNI= 71673620
+DIRECCION= Chorrillos
+SEXO= Femenino

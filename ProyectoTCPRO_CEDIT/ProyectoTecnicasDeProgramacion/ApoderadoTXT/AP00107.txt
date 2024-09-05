@@ -1,0 +1,7 @@
+ID= AP00107
+NOMBRE= Claudia Yenny
+APELLIDO= Albines Cuestas
+CELULAR= 954852754
+DNI= 4558525
+DIRECCION= San Borja
+SEXO= Femenino

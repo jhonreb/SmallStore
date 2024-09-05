@@ -1,0 +1,7 @@
+ID= AP00104
+NOMBRE= Jimena Maithe
+APELLIDO= Perez Pineda
+CELULAR= 963485125
+DNI= 4285635
+DIRECCION= Calle Libertad 312
+SEXO= Femenino

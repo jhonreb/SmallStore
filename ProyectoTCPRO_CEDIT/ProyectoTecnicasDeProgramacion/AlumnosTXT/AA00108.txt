@@ -1,0 +1,7 @@
+ID= AA00108
+NOMBRE= Pierina Alexia
+APELLIDO= Fuentes Carbajal
+GRADO= 3 años
+DNI= 999658123
+NIVEL= Guardería
+SEXO= Femenino

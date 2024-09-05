@@ -1,0 +1,7 @@
+ID= AP00110
+NOMBRE= Camila Guadalupe
+APELLIDO= Cuba Aguirre
+CELULAR= 963789863
+DNI= 78244856
+DIRECCION= Av.Guardia Civil
+SEXO= Femenino

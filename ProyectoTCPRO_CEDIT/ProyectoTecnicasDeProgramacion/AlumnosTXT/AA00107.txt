@@ -1,0 +1,7 @@
+ID= AA00107
+NOMBRE= Antonella Milagros
+APELLIDO= Buiza Albines
+GRADO= 7 años
+DNI= 78556954
+NIVEL= Reforzamiento
+SEXO= Femenino

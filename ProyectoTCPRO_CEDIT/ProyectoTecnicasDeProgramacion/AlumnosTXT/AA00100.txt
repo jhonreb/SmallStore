@@ -1,0 +1,7 @@
+ID= AA00100
+NOMBRE= dfg
+APELLIDO= gfdfgf
+GRADO= 2 años
+DNI= 345
+NIVEL= Inicial
+SEXO= Masculino

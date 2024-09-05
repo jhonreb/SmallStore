@@ -1,0 +1,427 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Formularios;
+
+import CLASES.Concepto;
+import CLASES.Principal;
+import static Formularios.Menú.escritorio;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Usuario
+ */
+public class CrearDeuda extends javax.swing.JInternalFrame {
+
+    /**
+     * Creates new form CrearDeuda
+     */
+    public CrearDeuda() {
+        initComponents();
+        transparencia();
+        cargarTabla();
+        CambiarTamañoColumnas();
+        jTextField1.setText(AñoActual());
+        jTextField1.setEditable(false);
+    }
+    
+    public void transparencia(){
+        btnGuardar.setOpaque(false);
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setBorderPainted(false);
+
+        btnRegresar.setOpaque(false);
+        btnRegresar.setContentAreaFilled(false);
+        btnRegresar.setBorderPainted(false);
+ 
+        
+    }
+    
+   public void cargarTabla(){
+   // String [] columnas = new String[]{" ","N°","Mes","Fecha Emisión","Fecha Vencimiento"};
+    String [] columnas = new String[]{" ","Mes"};
+    //boolean[] editable={true,false,false,false,false};
+    boolean[] editable={true,false};
+   // Class[]types= new Class[]{java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class};
+    Class[]types= new Class[]{java.lang.Boolean.class,java.lang.Object.class};
+    
+    DefaultTableModel mModel=new DefaultTableModel(columnas,0){
+        public Class getColumnClass(int i){
+            return types[i];
+        }
+        public boolean isCellEditable(int row, int column){
+            return editable[column];
+        }
+    };
+    
+    LimpiarTabla(tablaMeses,mModel);
+    Object[] datos= new Object[columnas.length];
+    ArrayList Meses=new ArrayList();
+    Concepto MES1= new Concepto();MES1.setMes("Enero");Concepto MES2= new Concepto();MES2.setMes("Febrero");
+    Concepto MES3= new Concepto();MES3.setMes("Marzo");Concepto MES4= new Concepto();MES4.setMes("Abril");
+    Concepto MES5= new Concepto();MES5.setMes("Mayo");Concepto MES6= new Concepto();MES6.setMes("Junio");
+    Concepto MES7= new Concepto();MES7.setMes("Julio");Concepto MES8= new Concepto();MES8.setMes("Agosto");
+    Concepto MES9= new Concepto();MES9.setMes("Setiembre");Concepto MES10= new Concepto();MES10.setMes("Octubre");
+    Concepto MES11= new Concepto();MES11.setMes("Noviembre");Concepto MES12= new Concepto();MES12.setMes("Diciembre");
+    Meses.add(MES1);Meses.add(MES2);Meses.add(MES3);Meses.add(MES4);Meses.add(MES5);
+    Meses.add(MES6);Meses.add(MES7);Meses.add(MES8);Meses.add(MES9);Meses.add(MES10);
+    Meses.add(MES11);Meses.add(MES12);
+    
+    for(int i=0;i<Meses.size();i++){
+        Concepto MESN=(Concepto)Meses.get(i);
+        datos[0]=selecTodos.isSelected();
+        datos[1]=MESN.getMes();
+        mModel.addRow(datos);
+    }
+    tablaMeses.setModel(mModel);
+}
+   
+   public void LimpiarTabla(JTable tabla, DefaultTableModel modeloTabla){
+       if(modeloTabla.getRowCount()>0){
+           for(int i=0;i<tabla.getRowCount();i++){
+           modeloTabla.removeRow(i);
+           i-=1;
+           }
+       }
+   }
+   
+   void CambiarTamañoColumnas(){
+    TableColumn column = null;
+    //Cambio el ancho de las columnas de la tabla jtblDatos
+    column=tablaMeses.getColumnModel().getColumn(0);
+    column.setPreferredWidth(30);
+    column=tablaMeses.getColumnModel().getColumn(1);
+    column.setPreferredWidth(30);
+    }
+   
+    public static String AñoActual(){
+    Date fecha=new Date();
+    SimpleDateFormat formatoFecha=new SimpleDateFormat("YYYY");
+    return formatoFecha.format(fecha); 
+}
+    int getIdDeuda(){return (Principal.deudas.size()+10001);}
+    String getConcepto(){return cbTipoConcepto.getSelectedItem().toString();}
+    //String getMes(){ return txtVencimiento.getText();}// revisar
+    float getMonto(){return ((Double)spiMonto.getValue()).floatValue();}
+    String getTNivel(){return cbTipoNivel.getSelectedItem().toString();}
+    String getTGrado(){return cbTipoGrado.getSelectedItem().toString();}
+    
+   
+    private boolean Seleccionados(int pos){
+    int contador=0;boolean bandera=true;
+    for (int i = 0; i < tablaMeses.getRowCount(); i++) {
+    boolean seleccion=(boolean) tablaMeses.getValueAt(i,pos);
+ //fila y columna
+    if(seleccion){
+        contador++;}
+    }
+    if(contador==0){bandera=false;}
+    return bandera;} 
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        spiMonto = new javax.swing.JSpinner();
+        cbTipoNivel = new javax.swing.JComboBox<>();
+        cbTipoGrado = new javax.swing.JComboBox<>();
+        cbTipoConcepto = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        selecTodos = new javax.swing.JCheckBox();
+        btnGuardar = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaMeses = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        setBorder(null);
+        setClosable(true);
+        getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jLabel1.setText("Concepto");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(160, 230, 80, 20);
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jLabel2.setText("Nivel");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(160, 280, 60, 20);
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jLabel3.setText("Grado");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(160, 330, 70, 19);
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jLabel4.setText("Monto");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(160, 390, 60, 19);
+
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jLabel8.setText("Guardar");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(1030, 470, 80, 30);
+
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jLabel6.setText("Año");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(160, 180, 34, 19);
+
+        spiMonto.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        spiMonto.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 10000.0d, 2.0d));
+        spiMonto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(spiMonto);
+        spiMonto.setBounds(260, 380, 170, 30);
+
+        cbTipoNivel.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        cbTipoNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Guardería", "Inicial", "Reforzamiento" }));
+        cbTipoNivel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbTipoNivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoNivelActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbTipoNivel);
+        cbTipoNivel.setBounds(260, 280, 170, 30);
+
+        cbTipoGrado.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        cbTipoGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "2 años", "3 años", "4 años", "5 años", "6 años", "7 años" }));
+        cbTipoGrado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(cbTipoGrado);
+        cbTipoGrado.setBounds(260, 330, 170, 30);
+
+        cbTipoConcepto.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        cbTipoConcepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Matrícula", "Pensión", "Certificado", "Constancia", "Buzo", "Uniforme" }));
+        cbTipoConcepto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(cbTipoConcepto);
+        cbTipoConcepto.setBounds(260, 230, 170, 30);
+
+        jButton1.setText("+");
+        jButton1.setToolTipText("Agregar nuevo concepto");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(470, 230, 60, 30);
+
+        selecTodos.setBackground(new java.awt.Color(208, 213, 255));
+        selecTodos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        selecTodos.setText("Seleccionar todos");
+        selecTodos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecTodosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(selecTodos);
+        selecTodos.setBounds(590, 170, 160, 20);
+
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_save_48px.png"))); // NOI18N
+        btnGuardar.setToolTipText("Guardar");
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardar);
+        btnGuardar.setBounds(1030, 420, 60, 50);
+
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_undo_26px.png"))); // NOI18N
+        btnRegresar.setToolTipText("Regresar");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(1170, 10, 50, 40);
+
+        tablaMeses.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        tablaMeses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaMeses);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(590, 190, 520, 220);
+
+        jTextField1.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(260, 170, 170, 30);
+
+        jSeparator12.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator12);
+        jSeparator12.setBounds(480, 60, 300, 20);
+
+        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
+        jLabel9.setText("Calendario de Deudas");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(500, 30, 260, 29);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/morado_x1000.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 1230, 730);
+
+        setBounds(0, 0, 1225, 748);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+        CrearConcepto frm5=new CrearConcepto();
+        escritorio.add(frm5);
+        frm5.show();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void selecTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecTodosActionPerformed
+        if(selecTodos.isSelected()){
+            selecTodos.setText("Deseleccionar Todo");
+            for (int i = 0; i < tablaMeses.getRowCount(); i++) {
+                tablaMeses.setValueAt(true, i, 0);
+            }
+        }else{
+            selecTodos.setText("Seleccionar Todo");
+            for (int i = 0; i < tablaMeses.getRowCount(); i++) {
+                tablaMeses.setValueAt(false, i, 0);
+            }
+        }
+    }//GEN-LAST:event_selecTodosActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
+        try{
+            if(cbTipoGrado.getSelectedIndex()== 0|| cbTipoConcepto.getSelectedIndex()==0
+                || cbTipoNivel.getSelectedIndex()==0 ){
+                JOptionPane.showMessageDialog(this,"Completa todos los datos");
+                return;
+            }else{
+                if(Seleccionados(0)){
+                    for (int j = 0; j < tablaMeses.getRowCount(); j++) {
+                        Concepto DeudaX= new Concepto();
+                        boolean sel=(boolean)tablaMeses.getValueAt(j, 0);
+                        //fila y columna
+                        if(sel){
+                            DeudaX.setIdDeuda(getIdDeuda());
+                            DeudaX.setConcepto(getConcepto());
+                            DeudaX.setGradoConcepto(getTGrado());
+                            DeudaX.setMes(String.valueOf(tablaMeses.getValueAt(j, 1)));
+                            DeudaX.setMonto(getMonto());
+                            DeudaX.setNivelConcepto(getTNivel());
+                            Principal.deudas.add(DeudaX);
+
+                            if(DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("2 años")
+                                ||DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("3 años")
+                                ||DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("4 años")
+                                ||DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("5 años")
+                                ||DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("6 años")
+                                ||DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("7 años")
+                                ||DeudaX.getNivelConcepto().equals("Inicial")&&DeudaX.getGradoConcepto().equals("<Todos>")){
+                                Principal.deudasInicial.add(DeudaX);
+                            }
+
+                            if(DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("2 años")
+                                ||DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("3 años")
+                                ||DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("4 años")
+                                ||DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("5 años")
+                                ||DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("6 años")
+                                ||DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("7 años")
+                                ||DeudaX.getNivelConcepto().equals("Guardería")&&DeudaX.getGradoConcepto().equals("<Todos>")){
+                                Principal.deudasGuarderia.add(DeudaX);
+                            }
+
+                            if(DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("2 años")
+                                ||DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("3 años")
+                                ||DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("4 años")
+                                ||DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("5 años")
+                                ||DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("6 años")
+                                ||DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("7 años")
+                                ||DeudaX.getNivelConcepto().equals("Reforzamiento")&&DeudaX.getGradoConcepto().equals("<Todos>")){
+                                Principal.deudasReforzamiento.add(DeudaX);
+                            }
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null,"Deuda creada exitosamente");
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        this.dispose();
+        
+        ListaDeudasCreadas frm22= new ListaDeudasCreadas();
+        escritorio.add(frm22);
+        frm22.show();
+       
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void cbTipoNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoNivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoNivelActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnRegresar;
+    public static javax.swing.JComboBox<String> cbTipoConcepto;
+    private javax.swing.JComboBox<String> cbTipoGrado;
+    private javax.swing.JComboBox<String> cbTipoNivel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JCheckBox selecTodos;
+    private javax.swing.JSpinner spiMonto;
+    private javax.swing.JTable tablaMeses;
+    // End of variables declaration//GEN-END:variables
+}

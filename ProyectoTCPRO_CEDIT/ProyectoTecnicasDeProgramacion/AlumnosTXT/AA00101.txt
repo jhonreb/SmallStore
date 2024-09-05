@@ -1,0 +1,7 @@
+ID= AA00101
+NOMBRE= Sofia Mercedes
+APELLIDO= Guerrero Alfaro
+GRADO= 5 años
+DNI= 74552369
+NIVEL= Inicial
+SEXO= Femenino

@@ -1,0 +1,7 @@
+ID= AA00102
+NOMBRE= Kiara Luhana
+APELLIDO= Yali Alzamora
+GRADO= 7 años
+DNI= 74256994
+NIVEL= Reforzamiento
+SEXO= Femenino
